@@ -1,8 +1,10 @@
 const express = require('express');
 const dashboardControler = require("../controllers/dashboard")
-const router = express.Router();
+const requireAuth = require("../middlewares/requireAuth")
 
-router.get('/test', (req,res)=> {res.send({test:1})})
+const router = express.Router();
+router.use(requireAuth)
+router.get('/getAttempts', dashboardControler.getAttempts)
 router.post('/addAttempt', dashboardControler.postAddAttempt)
 
 module.exports = router

@@ -6,6 +6,14 @@ exports.postAddAttempt = (req, res) => {
     mistakes: req.body.data.mistakes,
     time: req.body.data.time,
   });
-  attempt.save();
-  res.status(201).send({ msg: "Attempt was succesfully saved" });
+  attempt
+    .save()
+    .then(res.status(201).send({ msg: "Attempt was succesfully saved" }))
+    .catch((err) => console.log(err));
+};
+
+exports.getAttempts = (req, res) => {
+  Attempt.find().then((attempts) => {
+    res.send(attempts);
+  });
 };

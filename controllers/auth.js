@@ -45,8 +45,8 @@ exports.postLogin = (req, res, next) => {
       .compare(password, user.password)
       .then(doMatch => {
         if(doMatch) {
-          const accessToken = jwt.sign({_id:user._id}, process.env.SECRET, {expiresIn: '1d'})
-          return res.status(200).send({email, accessToken})
+          const token = jwt.sign({_id:user._id}, process.env.SECRET, {expiresIn: '1d'})
+          return res.status(200).send({email, token})
         }
         res.status(400).send({ msg: "Wrong password" });
       })
