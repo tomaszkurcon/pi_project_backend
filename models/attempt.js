@@ -13,6 +13,15 @@ const attempt = new Schema({
     time:{
         type:Number,
         required:true
+    },
+    user_id: {
+        type:Schema.Types.ObjectId,
+        required:true,
+        ref:"User"
+    },
+    email: {
+        type:String,
+        required:true
     }
 }, {timestamps:true})
 

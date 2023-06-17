@@ -5,6 +5,8 @@ exports.postAddAttempt = (req, res) => {
     enteredDigits: req.body.data.enteredDigits,
     mistakes: req.body.data.mistakes,
     time: req.body.data.time,
+    user_id: req.user._id,
+    email:req.user.email
   });
   attempt
     .save()
@@ -13,7 +15,8 @@ exports.postAddAttempt = (req, res) => {
 };
 
 exports.getAttempts = (req, res) => {
+
   Attempt.find().then((attempts) => {
-    res.send(attempts);
+    res.status(200).send({ data:attempts});
   });
 };
