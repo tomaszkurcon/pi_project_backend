@@ -8,9 +8,12 @@ const dashboardRoutes = require("./routes/dashboard");
 const app = express();
 app.use(express.json());
 
-app.use(cors());
-app.use(authRoutes);
-app.use(dashboardRoutes);
+app.use(cors({
+  origin:["http://localhost:3000", "https://pi-project.onrender.com"]
+}));
+
+app.use("/auth", authRoutes);
+app.use("/dashboard",dashboardRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)
