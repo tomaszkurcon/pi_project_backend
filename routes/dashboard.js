@@ -7,4 +7,5 @@ router.use(requireAuth)
 router.get('/getAttempts', dashboardControler.getAttempts)
 router.post('/addAttempt', dashboardControler.postAddAttempt)
 
+
 module.exports = router
