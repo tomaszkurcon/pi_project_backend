@@ -6,7 +6,7 @@ const authRoutes = require("./routes/auth");
 const dashboardRoutes = require("./routes/dashboard");
 const filesRoutes = require("./routes/files");
 const app = express();
-app.use(express.json());
+app.use(express.json({limit:'50mb'}));
 
 app.use(cors({
   origin:["http://localhost:3000", "https://pi-project.onrender.com"]
