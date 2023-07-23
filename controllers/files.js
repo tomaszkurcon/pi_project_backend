@@ -1,11 +1,17 @@
 const Image = require("../models/image");
-exports.postUploadFile = async (req, res) => {
+exports.putUploadFile = async (req, res) => {
     const body = req.body
-
+    console.log(body)
     try {
-        const newImage = await Image.create({base64:body.data, user_id:req.user})
+        const uploadedImage = await Image.findOneAndUpdate({user_id:req.user, type:body.data.type},{base64:body.data.base64, user_id:req.user, type:body.data.type})
+        if(uploadedImage) {
+            res.status(201).send({msg:"New image has been uploaded!"})
+        }
+       else {
+        const newImage = await Image.create({base64:body.data.base64, user_id:req.user, type:body.data.type})
         newImage.save()
-        res.status(201).send({msg:"New image has been uploaded!"})
+        res.status(200).send({msg:"New image has been created!"})
+       }
     }
     catch(error) {
         res.status(409).send({msg:error.message})

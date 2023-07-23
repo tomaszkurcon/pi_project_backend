@@ -3,6 +3,6 @@ const router = express.Router()
 const filesControler = require('../controllers/files');
 const requireAuth = require('../middlewares/requireAuth');
 router.use(requireAuth)
-router.post("/upload", filesControler.postUploadFile);
+router.put("/upload", filesControler.putUploadFile);
 router.get("/getFile", filesControler.getFile);
 module.exports = router;
