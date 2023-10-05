@@ -5,4 +5,5 @@ const requireAuth = require('../middlewares/requireAuth');
 router.use(requireAuth)
 router.put("/upload", filesControler.putUploadFile);
 router.get("/getFile", filesControler.getFile);
+router.delete("/delete", filesControler.deleteFile)
 module.exports = router;
