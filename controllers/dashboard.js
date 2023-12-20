@@ -38,7 +38,7 @@ exports.getUserData = async (req,res) => {
     res.status(200).send({data:userData})
   }
   catch(error) {
-    res.status(500).send({msg:error.message})
+    res.status(500).send({error:error.message})
   }
 
 

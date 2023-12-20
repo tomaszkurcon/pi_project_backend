@@ -13,7 +13,7 @@ exports.putUploadFile = async (req, res) => {
        }
     }
     catch(error) {
-        res.status(409).send({msg:error.message})
+        res.status(409).send({error:error.message})
     }
 }
 
@@ -24,7 +24,7 @@ exports.getFile = async (req, res) => {
         res.status(200).send({data:{base64:image[0].base64}})
     }
     catch(error) {
-        res.status(404).send({msg:error.message})
+        res.status(404).send({error:error.message})
     }
 }
 
@@ -35,6 +35,6 @@ exports.deleteFile = async (req, res) => {
         res.status(200).send({msg:"Image has been deleted successfully"})
     }
     catch(error) {
-        res.status(404).send({msg:error.message})
+        res.status(404).send({error:error.message})
     }
 }
