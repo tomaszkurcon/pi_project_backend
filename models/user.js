@@ -12,11 +12,12 @@ const userSchema = new Schema({
         type:String,
         required:true
     },
-    name: {
+    fullname: {
         type:String
     },
-    surname: {
-        type:String
+    username: {
+        type:String,
+        unique:true
     },
     resetPasswordToken:String,
     resetPasswordTokenExpire:Date,
