@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json({limit:'50mb'}));
 
 app.use(cors({
-  origin:["http://localhost:3000", "https://pi-project.onrender.com"]
+  origin:["http://localhost:3000", "https://pi-project.onrender.com", "https://pi-project-pi.vercel.app"]
 }));
 
 
